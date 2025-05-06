@@ -13,7 +13,7 @@ namespace EventBookingSystem.Services
         {
             _eventRepository = eventRepository;
         }
-        public async Task<bool> AddProject(AddEventForm project)
+        public async Task<bool> AddEvent(AddEventForm project)
         {
             if (project == null)
                 return false;

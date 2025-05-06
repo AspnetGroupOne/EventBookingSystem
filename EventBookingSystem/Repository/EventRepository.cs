@@ -18,7 +18,7 @@ namespace EventBookingSystem.Repository
             try
             {
                 ArgumentNullException.ThrowIfNull(entity);
-
+ 
                 await _context.Events.AddAsync(entity);
                 var result = await _context.SaveChangesAsync();
                 if (result > 0)
