@@ -16,7 +16,7 @@ namespace EventBookingSystem.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetEvents()
-        {
+         {
             var events = await _eventService.GetAllEventsAsync();
             return Ok(events);
         }
