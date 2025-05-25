@@ -35,9 +35,9 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles(); 
 
-app.UseCors("AllowFrontend");
-
 app.UseRouting();
+
+app.UseCors("AllowFrontend");
 
 app.UseAuthorization();
 app.MapControllers();
