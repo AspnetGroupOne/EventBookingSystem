@@ -7,6 +7,6 @@
         public DateTime Date { get; set; }
         public string Location { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public List<int> Tickets { get; set; } = new List<int>();
+        public int TicketsAvailable { get; set; }
     }
 }

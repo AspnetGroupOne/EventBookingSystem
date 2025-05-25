@@ -33,7 +33,7 @@ namespace EventBookingSystem.Services
                 Date = e.Date,
                 Location = e.Location,
                 Description = e.Description,
-                Tickets = e.Tickets
+                TicketsAvailable = e.TicketsAvailable
             });
         }
     }

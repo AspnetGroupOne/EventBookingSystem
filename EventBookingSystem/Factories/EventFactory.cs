@@ -17,7 +17,7 @@ namespace EventBookingSystem.Factories
                 Date = form.EventDate,
                 Location = form.EventLocation,
                 Description = form.EventDescription,
-                Tickets = form.Tickets ?? new List<int>()
+                TicketsAvailable = form.TicketsAvailable
             };
         }
 
@@ -32,7 +32,7 @@ namespace EventBookingSystem.Factories
                 Date = entity.Date,
                 Location = entity.Location,
                 Description = entity.Description,
-                Tickets = entity.Tickets
+                TicketsAvailable = entity.TicketsAvailable
             };
         }
     }

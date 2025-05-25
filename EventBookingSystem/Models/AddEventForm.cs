@@ -26,7 +26,7 @@ namespace EventBookingSystem.Models
         public string EventDescription { get; set; } = null!;
 
         [Display(Name = "Tickets")]
-        public List<int>? Tickets { get; set; } = new List<int>();
-            
+        public int TicketsAvailable { get; set; }  
+
     }
 }
