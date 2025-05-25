@@ -25,7 +25,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseCors("AllowFrontend");
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 app.MapControllers();
