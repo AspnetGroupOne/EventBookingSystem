@@ -18,5 +18,11 @@ namespace EventBookingSystem.Models
         [Display(Name = "Event Location", Prompt = "Enter Event Location")]
         [Required(ErrorMessage = "Event Location is required")]
         public string EventLocation { get; set; } = null!;
+
+
+        [DataType(DataType.Text)]
+        [Display(Name = "Event Description", Prompt = "Enter Event Description")]
+        [Required(ErrorMessage = "Event Description is required")]
+        public string EventDescription { get; set; } = null!;
     }
 }

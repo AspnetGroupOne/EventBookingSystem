@@ -31,7 +31,8 @@ namespace EventBookingSystem.Services
                 Id = e.Id,
                 Name = e.Name,
                 Date = e.Date,
-                Location = e.Location
+                Location = e.Location,
+                Description = e.Description
             });
         }
     }
