@@ -15,7 +15,8 @@ namespace EventBookingSystem.Factories
             {
                 Name = form.EventName,
                 Date = form.EventDate,
-                Location = form.EventLocation
+                Location = form.EventLocation,
+                Description = form.EventDescription
             };
         }
 
@@ -28,7 +29,8 @@ namespace EventBookingSystem.Factories
                 Id = entity.Id,
                 Name = entity.Name,
                 Date = entity.Date,
-                Location = entity.Location
+                Location = entity.Location,
+                Description = entity.Description
             };
         }
     }
