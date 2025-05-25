@@ -16,36 +16,33 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:5173")
+        policy.WithOrigins("http://localhost:5173", "https://localhost:5173")
+
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
 });
 
 var app = builder.Build();
-
+    
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
 
-// app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
-app.UseStaticFiles();
+app.UseStaticFiles(); 
+
+app.UseCors("AllowFrontend");
 
 app.UseRouting();
 
-// **Add CORS middleware here, before UseAuthorization and MapControllerRoute**
-app.UseCors("AllowFrontend");
-
 app.UseAuthorization();
-
-app.MapStaticAssets();
-
+app.MapControllers();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
