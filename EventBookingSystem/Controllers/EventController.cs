@@ -9,14 +9,16 @@ namespace EventBookingSystem.Controllers
     public class EventsController : ControllerBase
     {
         private readonly EventService _eventService;
-        public EventsController(EventService eventService)
+        private readonly EventIntegrationService _eventInteractionService;
+        public EventsController(EventService eventService, EventIntegrationService eventInteractionService)
         {
             _eventService = eventService;
+            _eventInteractionService = eventInteractionService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetEvents()
-         {
+        {
             var events = await _eventService.GetAllEventsAsync();
             return Ok(events);
         }
@@ -32,6 +34,17 @@ namespace EventBookingSystem.Controllers
                 return Ok("Event added successfully.");
 
             return BadRequest("Failed to add event.");
+        }
+
+
+        [HttpPost("book")]
+        public async Task<IActionResult> BookTicket([FromBody] CreateBookingDto dto)
+            {
+            var result = await _eventInteractionService.BookTicketAndUpdateEventAsync(dto);
+            if (!result)
+                return BadRequest("Could not book ticket or no tickets available.");
+
+            return Ok("Ticket booked successfully.");
         }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventBookingSystem.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250525171325_tickets")]
-    partial class tickets
+    [Migration("20250525221739_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,9 @@ namespace EventBookingSystem.Migrations
 
             modelBuilder.Entity("EventBookingSystem.Entities.EventEntity", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -48,8 +46,8 @@ namespace EventBookingSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.PrimitiveCollection<string>("Tickets")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TicketsAvailable")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

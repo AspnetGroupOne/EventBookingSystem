@@ -18,7 +18,7 @@ namespace EventBookingSystem.Repository
             try
             {
                 ArgumentNullException.ThrowIfNull(entity);
- 
+
                 await _context.Events.AddAsync(entity);
                 var result = await _context.SaveChangesAsync();
                 if (result > 0)
@@ -42,8 +42,28 @@ namespace EventBookingSystem.Repository
             var entities = await _context.Events.ToListAsync();
             return entities;
         }
+    
 
-    }
+
     //update    
-    //delete
+
+    public async Task<bool> UpdateAsync(EventEntity entity)
+        {
+            try
+            {
+                ArgumentNullException.ThrowIfNull(entity);
+                _context.Events.Update(entity);
+                var result = await _context.SaveChangesAsync();
+                if (result > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {   
+                Debug.WriteLine(ex.Message);
+                return default;
+            }
+            return false;
+        }
+        //delete
+    }
 }

@@ -2,6 +2,7 @@ using EventBookingSystem.Contexts;
 using EventBookingSystem.Repository;
 using EventBookingSystem.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,17 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddCors(options => { options.AddPolicy("AllowAll", x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); });
+
+builder.Services.AddHttpClient<BookingApiService>(client =>
+{
+    client.BaseAddress = new Uri("https://booking-api-service.azurewebsites.net/");
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+});
+
+
+builder.Services.AddScoped<BookingApiService>();
+builder.Services.AddScoped<EventIntegrationService>();
+
 
 var app = builder.Build();
 
