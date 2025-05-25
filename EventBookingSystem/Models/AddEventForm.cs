@@ -24,5 +24,9 @@ namespace EventBookingSystem.Models
         [Display(Name = "Event Description", Prompt = "Enter Event Description")]
         [Required(ErrorMessage = "Event Description is required")]
         public string EventDescription { get; set; } = null!;
+
+        [Display(Name = "Tickets")]
+        public List<int>? Tickets { get; set; } = new List<int>();
+            
     }
 }
